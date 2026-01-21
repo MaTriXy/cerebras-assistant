@@ -20,7 +20,7 @@
   },
   "models": {
     "default_model": "gpt-oss-120b",
-    "reasoner_model": "qwen-3-235b-a22b-instruct-2507"
+    "reasoner_model": "zai-glm-4.7"
   },
   "security": {
     "require_powershell_confirmation": true,

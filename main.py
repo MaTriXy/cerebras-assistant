@@ -222,7 +222,7 @@ def try_handle_r1_command(user_input: str, conversation_history: List[Dict[str, 
         temp_conversation = conversation_history + [{"role": "user", "content": user_prompt}]
         
         try:
-            with console.status("[bold yellow]Qwen (R1) is thinking...[/bold yellow]", spinner="dots"):
+            with console.status(f"[bold yellow]{REASONER_MODEL} is thinking...[/bold yellow]", spinner="dots"):
                 response = client.chat.completions.create(
                     model=REASONER_MODEL,
                     messages=temp_conversation,
@@ -250,7 +250,7 @@ def try_handle_r1_command(user_input: str, conversation_history: List[Dict[str, 
                         }
                     })
             
-            console.print("[bold bright_blue]🧠 Qwen:[/bold bright_blue]")
+            console.print("[bold bright_blue]🧠 Z.ai GLM:[/bold bright_blue]")
             if full_response_content:
                 clean_content = full_response_content.replace("<think>", "").replace("</think>", "")
                 enhanced_content = enhance_terminal_output(clean_content)
@@ -952,7 +952,7 @@ def main_loop() -> None:
             
             # Determine which model to use
             current_model = model_context['current_model']
-            model_name = "GPT OSS" if current_model == DEFAULT_MODEL else "Qwen"
+            model_name = "GPT OSS" if current_model == DEFAULT_MODEL else "Z.ai GLM"
             
             # Check context usage and force truncation if needed
             context_info = get_context_usage_info(conversation_history, current_model)

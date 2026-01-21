@@ -100,9 +100,8 @@ AGGRESSIVE_TRUNCATION_THRESHOLD = conversation_config.get("aggressive_truncation
 
 # Model-specific context limits
 MODEL_CONTEXT_LIMITS = {
-    "gpt-oss-120b": 60000,  
-    "qwen-3-32b": 60000,  # 60k context limit
-    "qwen-3-235b-a22b-instruct-2507": 60000,  # 60k context limit for reasoner model
+    "gpt-oss-120b": 60000,
+    "zai-glm-4.7": 60000,  # 60k context limit
 }
 
 def get_max_tokens_for_model(model_name: str) -> int:
@@ -111,7 +110,7 @@ def get_max_tokens_for_model(model_name: str) -> int:
 
 model_config = config.get("models", {})
 DEFAULT_MODEL = model_config.get("default_model", "gpt-oss-120b")
-REASONER_MODEL = model_config.get("reasoner_model", "qwen-3-32b")
+REASONER_MODEL = model_config.get("reasoner_model", "zai-glm-4.7")
 
 security_config = config.get("security", {})
 DEFAULT_SECURITY_CONTEXT = {

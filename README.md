@@ -10,7 +10,7 @@ Cerebras AI Code Assistant is an enhanced command-line interface built on top of
 
 ### 🤖 **AI-Powered Development**
 - **Conversational Interface**: Interactive chat with advanced Cerebras AI models
-- **Dual Model Support**: Toggle between chat model (`gpt-oss-120b`) and reasoning model (`qwen-3-235b-a22b-instruct-2507`) (Adjust config.json to change models)
+- **Dual Model Support**: Toggle between chat model (`gpt-oss-120b`) and reasoning model (`Z.ai GLM 4.7`) (Adjust config.json to change models)
 - **Function Calling**: AI can automatically execute tools and operations
 - **Streaming Responses**: Real-time AI response with rich formatting
 
@@ -145,6 +145,25 @@ The assistant can automatically execute these operations:
 
 ## Configuration
 
+### AI Models
+
+The assistant supports dual-model architecture:
+
+- **Chat Model (`gpt-oss-120b`)**: Optimized for conversational interactions and general coding tasks
+- **Reasoning Model (`Z.ai GLM 4.7`)**: Enhanced reasoning capabilities for complex problem-solving
+
+You can toggle between models using `/reasoner` command or make a one-off reasoning call with `/r`.
+
+**Model Configuration** (in `config.json`):
+```json
+{
+  "models": {
+    "default_model": "gpt-oss-120b",
+    "reasoner_model": "zai-glm-4.7"
+  }
+}
+```
+
 ### Fuzzy Matching Thresholds
 - **File Path Matching**: 80% similarity minimum
 - **Code Edit Matching**: 85% similarity minimum
@@ -152,7 +171,7 @@ The assistant can automatically execute these operations:
 ### Context Limits
 - **Maximum History**: 50 messages
 - **Context Files**: 5 files maximum
-- **Token Estimation**: ~66,000 tokens context window
+- **Token Estimation**: ~60,000 tokens context window (Z.ai GLM 4.7)
 
 ## Project Structure
 
@@ -214,4 +233,4 @@ If you encounter any issues or have questions, please:
 
 ---
 
-**Powered by Cerebras AI Models**
+**Powered by Cerebras AI Models, including Z.ai GLM 4.7**
