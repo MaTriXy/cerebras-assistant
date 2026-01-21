@@ -20,11 +20,11 @@ Cerebras AI Code Assistant is an enhanced command-line interface built on top of
 - **Batch Operations**: Read and create multiple files efficiently
 - **Context-Aware**: Maintains file context across conversations
 
-### 🔧 **Seamless Git Integration**
-- **Repository Management**: Initialize, status checking, branch operations
-- **Smart Staging**: Automatic or manual file staging with intelligent commit handling
-- **Branch Workflow**: Create and switch between Git branches effortlessly
-- **Status Monitoring**: Rich display of Git status with detailed file change tracking
+### 🔧 **Shell Command Integration**
+- **Cross-Platform Support**: Execute bash (Linux/macOS/WSL) and PowerShell commands
+- **Git Operations**: Full Git workflow through shell commands (init, add, commit, branch, status, etc.)
+- **Security Confirmation**: Prompts for approval before executing potentially dangerous commands
+- **Flexible Execution**: AI can run any shell command with user oversight
 
 ### 💬 **Advanced Context Management**
 - **Token-Based Estimation**: Intelligent conversation history management
@@ -33,7 +33,7 @@ Cerebras AI Code Assistant is an enhanced command-line interface built on top of
 - **Usage Monitoring**: Real-time context usage statistics and warnings
 
 ### 🛡️ **Security & Safety**
-- **Command Confirmation**: Security prompts for potentially dangerous operations
+- **Shell Command Confirmation**: Security prompts for bash and PowerShell commands
 - **Path Validation**: Robust file path sanitization and validation
 - **Size Limits**: Configurable limits for file operations and content
 - **Exclusion Patterns**: Smart filtering of system and temporary files
@@ -94,20 +94,23 @@ Cerebras AI Code Assistant is an enhanced command-line interface built on top of
 The assistant supports both natural language conversation and special commands:
 
 #### **Special Commands**
+
+**General Commands:**
 - `/help` - Show all available commands and their descriptions
-- `/add <path>` - Add files or directories to conversation context (supports fuzzy matching)
-- `/git add . or <files>` - Stage all changes
-- `/git commit [message]` - Stage all changes and commit with optional message
-- `/git branch <name>` - Create and switch to a new Git branch
-- `/git init` - Initialize a new Git repository
-- `/git status` - Display current Git repository status
-- `/reasoner` - Toggle between chat and reasoning models
-- `/r` - Make a one-off call to the reasoning model
+- `/r` - Call Reasoner model for one-off reasoning tasks
+- `/reasoner` - Toggle between chat and reasoner models
+- `/markdown` - Toggle markdown rendering for AI responses
 - `/clear` - Clear the console screen
 - `/clear-context` - Reset conversation context
 - `/context` - Show current context usage statistics
-- `/folder [path]` - Set or display the current base directory
+- `/os` - Show operating system information
 - `/exit` or `/quit` - Exit the application
+
+**Directory & File Management:**
+- `/folder` - Show current base directory
+- `/folder <path>` - Set base directory for file operations
+- `/folder reset` - Reset base directory to current working directory
+- `/add <path>` - Add file/dir to conversation context (supports fuzzy matching)
 
 #### **Example Workflows**
 
@@ -120,10 +123,12 @@ The assistant supports both natural language conversation and special commands:
 
 **Git workflow:**
 ```bash
-/git init
-/git add .
-/git commit "Initial commit with source files"
-/git branch feature/new-feature
+# Use bash commands through the AI assistant
+git init
+git add .
+git commit "Initial commit with source files"
+git branch feature/new-feature
+git status
 ```
 
 **File operations through conversation:**
@@ -137,11 +142,12 @@ Assistant: [Edits the existing function using fuzzy matching]
 
 ### AI Tool Integration
 
-The assistant can automatically execute these operations:
+The assistant can automatically execute these operations through function calls:
 
-1. **File Operations**: `read_file`, `create_file`, `edit_file`, `read_multiple_files`
-2. **Git Operations**: `git_init`, `git_add`, `git_commit`, `git_create_branch`, `git_status`
-3. **System Operations**: `run_powershell` (with security confirmation)
+1. **File Operations**: `read_file`, `create_file`, `edit_file`, `read_multiple_files`, `create_multiple_files`
+2. **System Operations**: `run_bash`, `run_powershell` (with security confirmation for shell commands)
+
+**Note:** Git operations are performed through bash/PowerShell commands (e.g., `git add .`, `git commit`, `git status`) rather than dedicated Git functions.
 
 ## Configuration
 
